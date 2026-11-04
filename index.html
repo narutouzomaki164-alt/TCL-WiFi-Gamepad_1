@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>TCL WiFi Gamepad</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080b12;color:white;font-family:Arial;overflow:hidden;touch-action:none}
+header{height:48px;display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:#151c29}
+h3{margin:0;color:#58baff}
+#status{font-size:12px;color:#ffca55}
+#connect{position:absolute;z-index:5;top:52px;left:50%;transform:translateX(-50%);display:flex;gap:5px;width:95%;max-width:500px}
+input{min-width:0;flex:1;padding:10px;border-radius:8px;border:1px solid #44536b;background:#182235;color:white}
+button{color:white;background:#202b40;border:1px solid #52617a;border-radius:50%;font-weight:bold;touch-action:none}
+#connect button{border-radius:8px;padding:8px}
+#game{height:calc(100dvh - 48px);display:flex;align-items:center;justify-content:space-between;padding:90px 3vw 12px;gap:3vw}
+.side{display:flex;align-items:center;gap:12px}
+.stick{width:min(29vw,190px);height:min(29vw,190px);border:2px solid #35445c;border-radius:50%;position:relative;background:#111a29;touch-action:none}
+.knob{width:34%;height:34%;position:absolute;left:33%;top:33%;border-radius:50%;background:linear-gradient(#9aa6b8,#36445b);box-shadow:0 2px 10px #000}
+.dpad{width: min(25vw,145px);height:min(25vw,145px);display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);gap:3px}
+.dpad button{border-radius:9px;font-size:20px}
+.center{display:flex;flex-direction:column;gap:12px;align-items:center}
+.center button{border-radius:9px;padding:10px 18px}
+.actions{display:grid;grid-template:repeat(3, min(16vw,75px))/repeat(3,min(16vw,75px));gap:4px}
+.actions button{font-size:20px}
+.actions .y{grid-area:1/2}.actions .x{grid-area:2/1}
+.actions .b{grid-area:2/3}.actions .a{grid-area:3/2}
+.shoulders{position:absolute;top:110px;left:3%;right:3%;display:flex;justify-content:space-between;pointer-events:none}
+.shoulders div{display:flex;gap:8px}
+.shoulders button{pointer-events:auto;border-radius:9px;padding:12px 15px}
+.small{font-size:11px;color:#9aa9bd}
+@media(orientation:portrait){
+#game{padding-top:100px;gap:5px}
+.stick{width:26vw;height:26vw}
+.dpad{width:24vw;height:24vw}
+.actions{grid-template:repeat(3,13vw)/repeat(3,13vw)}
+}
+</style>
+</head>
+<body>
+<header>
+<h3>🎮 TCL GAMEPAD</h3>
+<span id="status">Disconnected</span>
+</header>
+<div id="connect">
+<input id="address" placeholder="TV IP address (receiver required)">
+<button id="join">CONNECT</button>
+<button id="full">⛶</button>
+</div>
+<div class="shoulders">
+<div>
+<button data-key="LB">LB</button>
+<button data-key="LT">LT</button>
+</div>
+<div>
+<button data-key="RB">RB</button>
+<button data-key="RT">RT</button>
+</div>
+</div>
+<main id="game">
+<section class="side">
+<div class="stick" data-stick="left"><div class="knob"></div></div>
+<div class="dpad">
+<button data-key="UP" style="grid-area:1/2">▲</button>
+<button data-key="LEFT" style="grid-area:2/1">◀</button>
+<button data-key="RIGHT" style="grid-area:2/3">▶</button>
+<button data-key="DOWN" style="grid-area:3/2">▼</button>
+</div>
+</section>
+<section class="center">
+<button data-key="BACK">BACK</button>
+<button data-key="START">START</button>
+<div class="small" id="player">PLAYER 1</div>
+</section>
+<section class="side">
+<div class="stick" data-stick="right"><div class="knob"></div></div>
+<div class="actions">
+<button class="y" data-key="Y">Y</button>
+<button class="x" data-key="X">X</button>
+<button class="b" data-key="B">B</button>
+<button class="a" data-key="A">A</button>
+</div>
+</section>
+</main>
+<script>
+let socket=null;
+const status=document.getElementById('status');
+const player='P'+Math.random().toString(36).slice(2,7);
+document.getElementById('player').textContent=player;
+function send(type,key,value){
+ if(socket && socket.readyState===WebSocket.OPEN){
+  socket.send(JSON.stringify({player,type,key,value}));
+ }
+}
+document.getElementById('join').onclick=()=>{
+ const ip=document.getElementById('address').value.trim();
+ if(!ip){status.textContent='Enter TV IP';return}
+ try{
+ socket=new WebSocket('ws://'+ip+':8765');
+ socket.onopen=()=>status.textContent='Connected';
+ socket.onclose=()=>status.textContent='Disconnected';
+ socket.onerror=()=>status.textContent='Connection error';
+ }catch(e){status.textContent='Invalid address'}
+};
+document.getElementById('full').onclick=()=>{
+ if(document.documentElement.requestFullscreen)
+ document.documentElement.requestFullscreen();
+};
+document.querySelectorAll('[data-key]').forEach(btn=>{
+ const key=btn.dataset.key;
+ btn.addEventListener('pointerdown',e=>{
+  e.preventDefault();btn.setPointerCapture(e.pointerId);
+  send('down',key,1);
+  btn.style.background='#167ac4';
+ });
+ const release=e=>{
+  send('up',key,0);btn.style.background='';
+ };
+ btn.addEventListener('pointerup',release);
+ btn.addEventListener('pointercancel',release);
+ btn.addEventListener('lostpointercapture',release);
+});
+document.querySelectorAll('[data-stick]').forEach(stick=>{
+ const knob=stick.querySelector('.knob');
+ let active=false;
+ function move(e){
+  const r=stick.getBoundingClientRect();
+  const cx=r.left+r.width/2,cy=r.top+r.height/2;
+  let dx=(e.clientX-cx)/(r.width/2);
+  let dy=(e.clientY-cy)/(r.height/2);
+  const len=Math.hypot(dx,dy);
+  if(len>1){dx/=len;dy/=len}
+  knob.style.left=(33+dx*30)+'%';
+  knob.style.top=(33+dy*30)+'%';
+  send('axis',stick.dataset.stick,{x:+dx.toFixed(2),y:+(-dy).toFixed(2)});
+ }
+ function reset(){
+  active=false;knob.style.left='33%';knob.style.top='33%';
+  send('axis',stick.dataset.stick,{x:0,y:0});
+ }
+ stick.addEventListener('pointerdown',e=>{
+  active=true;stick.setPointerCapture(e.pointerId);move(e);
+ });
+ stick.addEventListener('pointermove',e=>{if(active)move(e)});
+ stick.addEventListener('pointerup',reset);
+ stick.addEventListener('pointercancel',reset);
+});
+</script>
+</body>
+</html>
