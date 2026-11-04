@@ -1,0 +1,67 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.tvreceiver"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->INJECTED
+8        android:minSdkVersion="23"
+8-->INJECTED
+9        android:targetSdkVersion="35" />
+9-->INJECTED
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:3:5-67
+11-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:3:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:4:5-79
+12-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:4:22-76
+13
+14    <uses-feature
+14-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:6:5-8:36
+15        android:name="android.software.leanback"
+15-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:7:9-49
+16        android:required="false" />
+16-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:8:9-33
+17    <uses-feature
+17-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:10:5-12:36
+18        android:name="android.hardware.touchscreen"
+18-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:11:9-52
+19        android:required="false" />
+19-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:12:9-33
+20
+21    <application
+21-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:14:5-30:19
+22        android:debuggable="true"
+23        android:extractNativeLibs="false"
+23-->INJECTED
+24        android:label="TCL WiFi Gamepad"
+24-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:15:9-41
+25        android:theme="@android:style/Theme.Material.NoActionBar"
+25-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:16:9-66
+26        android:usesCleartextTraffic="true" >
+26-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:17:9-44
+27        <activity
+27-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:19:9-29:20
+28            android:name="com.example.tvreceiver.MainActivity"
+28-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:20:13-41
+29            android:exported="true" >
+29-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:21:13-36
+30            <intent-filter>
+30-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:23:13-27:29
+31                <action android:name="android.intent.action.MAIN" />
+31-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:24:17-69
+31-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:24:25-66
+32
+33                <category android:name="android.intent.category.LAUNCHER" />
+33-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:25:17-77
+33-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:25:27-74
+34                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+34-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:26:17-86
+34-->/workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:26:27-83
+35            </intent-filter>
+36        </activity>
+37    </application>
+38
+39</manifest>

@@ -1,0 +1,73 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:1:1-31:12
+INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:1:1-31:12
+INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:1:1-31:12
+INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:1:1-31:12
+	package
+		INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:3:5-67
+	android:name
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:3:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:4:5-79
+	android:name
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:4:22-76
+uses-feature#android.software.leanback
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:6:5-8:36
+	android:required
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:8:9-33
+	android:name
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:7:9-49
+uses-feature#android.hardware.touchscreen
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:10:5-12:36
+	android:required
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:12:9-33
+	android:name
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:11:9-52
+application
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:14:5-30:19
+INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:14:5-30:19
+	android:extractNativeLibs
+		INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml
+	android:label
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:15:9-41
+	android:theme
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:16:9-66
+	android:usesCleartextTraffic
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:17:9-44
+activity#com.example.tvreceiver.MainActivity
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:19:9-29:20
+	android:exported
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:21:13-36
+	android:name
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:20:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER+category:name:android.intent.category.LEANBACK_LAUNCHER
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:23:13-27:29
+action#android.intent.action.MAIN
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:24:17-69
+	android:name
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:24:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:25:27-74
+category#android.intent.category.LEANBACK_LAUNCHER
+ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:26:17-86
+	android:name
+		ADDED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml:26:27-83
+uses-sdk
+INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml
+INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /workspaces/TCL-WiFi-Gamepad_1/tv-receiver/app/src/main/AndroidManifest.xml
